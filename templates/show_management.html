@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Show Management{% endblock %}
+
+{% block content %}
+  <h1>Show Management</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Tags</th>
+        <th>Ticket Price</th>
+        <th>Venue</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for show in shows %}
+        <tr>
+          <td>{{ show[0] }}</td>
+          <td>{{ show[1] }}</td>
+          <td>{{ show[2] }}</td>
+          <td>{{ show[3] }}</td>
+          <td>{{ show[4] }}</td>
+          <td>{{ show[5] }}</td>
+          <td>
+            <form action="{{ url_for('delete_show', show_id=show[0]) }}" method="POST">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+

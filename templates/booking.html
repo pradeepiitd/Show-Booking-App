@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Booking{% endblock %}
+
+{% block content %}
+  <h1>Book Tickets</h1>
+  <form action="{{ url_for('booking', show_id=show_id) }}" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" max="{{ max_tickets }}" required>
+
+    <input type="submit" value="Book">
+  </form>
+{% endblock %}
