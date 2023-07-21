@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} - Ticket Show Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <nav>
+      <h1>Ticket Show Booking</h1>
+      <ul>
+        {% if 'user_id' in session %}
+          {% if session['user_id'] == 1 %}
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('create_venue') }}">Create Venue</a></li>
+            <li><a href="{{ url_for('venue_management') }}">Venue Management</a></li>
+            <li><a href="{{ url_for('create_show') }}">Create Show</a></li>
+            <li><a href="{{ url_for('show_management') }}">Show Management</a></li>
+          {% endif %}
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>

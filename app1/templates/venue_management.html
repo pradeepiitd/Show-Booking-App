@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Venue Management{% endblock %}
+
+{% block content %}
+  <h1>Venue Management</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Place</th>
+        <th>Capacity</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for venue in venues %}
+        <tr>
+          <td>{{ venue[0] }}</td>
+          <td>{{ venue[1] }}</td>
+          <td>{{ venue[2] }}</td>
+          <td>{{ venue[3] }}</td>
+          <td>
+            <form action="{{ url_for('delete_venue', venue_id=venue[0]) }}" method="POST">
+              <input type="submit" value="Delete">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
