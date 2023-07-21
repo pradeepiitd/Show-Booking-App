@@ -1,5 +1,5 @@
 # Show-Booking-App
-uses Flask, Jinja2, SQLite, Werkzeug
+uses Flask, Jinja2, SQLAlchemy, Werkzeug
 
 This is a simple web application for booking tickets to shows. It is built using Flask, Jinja, and SQLite.
 
